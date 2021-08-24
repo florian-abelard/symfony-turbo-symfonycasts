@@ -1,8 +1,10 @@
-# docker-starter-kit
+# symfony-turbo-symfonycasts
 
-##Description 
+## Description 
 
-Starter kit Docker pour créer des applications basées sur une stack PHP / PostgreSQL
+Application support pour le tutoriel 
+
+https://symfonycasts.com/screencast/turbo
 
 ## Démarrage
 
@@ -11,53 +13,26 @@ Starter kit Docker pour créer des applications basées sur une stack PHP / Post
 * docker
 * docker-compose (version 3)
 
-### Usage
-
-#### Initialisation du projet
+### Mise en place de l'environnement
 
 ```bash
-APPLICATION_NAME='<application_name>' # A définir
+# Récupération des sources github
+git clone https://github.com/florian-abelard/symfony-turbo-symfonycasts.git
 
-git clone git@github.com:florian-abelard/docker-starter-kit.git $APPLICATION_NAME
-cd $APPLICATION_NAME
+# Initialisation du projet
+make init
 
-rm -Rf .git/
-git init
-
-git remote add origin git@github.com:florian-abelard/$APPLICATION_NAME.git
-```
-
-Modifier le fichier `README.md`
-
-```bash
-git add .
-git commit -a -m "Initial commit"
-```
-
-#### Démarrage des containers docker
-
-Editer le fichier `.env`, puis : 
-```bash
+# Démarrer les containers docker
 make up
+
+# Créer et alimenter la base de données
+make db-init
+
+# Afficher toutes les commandes disponibles
+make
 ```
 
-### Avec symfony
-
-```bash
-rm application/* -Rf
-
-docker run --rm \
-    -v ${PWD}:/var/www/app \
-    -w /var/www/app \
-    composer:latest \
-    create-project symfony/website-skeleton:"^4.4" application
-
-sudo chown ${USER}. application/ -R 
-
-# A compléter
-```
-
-### Accès
+## Accès
 
 Accès interface web sur `http://localhost:8080`
 
