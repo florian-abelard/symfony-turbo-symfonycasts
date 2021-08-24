@@ -7,13 +7,18 @@ services:
     image: ${APP_NAME}-php:develop
     container_name: ${APP_NAME}-php
     restart: always
+    depends_on:
+      - db
     ports:
       - '9000:9000'
     volumes:
       - .:/var/www/app
-    working_dir: /var/www/app/application
+      - ~/.cache/composer:/tmp/.composer/cache
     environment:
+      COMPOSER_CACHE_DIR: /tmp/.composer/cache
+      COMPOSER_MEMORY_LIMIT: -1
       XDEBUG_CONFIG: remote_host=${HOST_IP} remote_port=9001 remote_enable=1
+    working_dir: /var/www/app/application
 
   web:
     build: docker/images/nginx

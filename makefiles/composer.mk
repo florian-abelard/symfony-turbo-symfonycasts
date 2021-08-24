@@ -2,7 +2,7 @@
 # Composer Makefile
 #------------------------------------------------------------------------------
 
-COMPOSER_DOCKER_CMD = docker-compose -f ${DOCKER_COMPOSE_BUILDER_FILE} run -T --user ${USER_ID}:${GROUP_ID} composer composer ${1}
+COMPOSER_DOCKER_CMD = docker-compose run -T --user ${USER_ID}:${GROUP_ID} php composer ${1}
 
 # Cli arguments
 ifneq (,$(filter composer-require% composer-remove%, $(firstword $(MAKECMDGOALS))))

@@ -15,3 +15,6 @@ RUN apk update \
     && apk add tzdata \
     && ln -s /usr/share/zoneinfo/Europe/Paris /etc/localtime \
     && "date"
+
+# Composer
+COPY --from=composer:2.0.12 /usr/bin/composer /usr/local/bin/composer
