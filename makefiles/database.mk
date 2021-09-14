@@ -26,10 +26,13 @@ db-create-migration: ##@database create a new migration file
 db-schema-update:
 	$(call database-doctrine-exec, php bin/console doctrine:schema:update --force)
 
+db-wait-for:
+	sh bin/wait-for-db.sh
+
 #------------------------------------------------------------------------------
 
 clean-db: db-drop ##@database clean database
 
 #------------------------------------------------------------------------------
 
-.PHONY: db-init db-create db-drop db-migrate db-create-migration db-schema-update clean-db
+.PHONY: db-init db-create db-drop db-migrate db-create-migration db-schema-update db-wait-for clean-db
