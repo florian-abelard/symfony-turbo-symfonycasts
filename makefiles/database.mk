@@ -18,7 +18,7 @@ db-drop: ##@database drop the database
 	$(call database-doctrine-exec, php bin/console doctrine:database:drop --if-exists --force)
 
 db-fixtures: ##@database run the database fixtures
-	$(call database-doctrine-exec, php bin/console doctrine:fixtures:load)
+	$(call database-doctrine-exec, php bin/console doctrine:fixtures:load --no-interaction)
 
 db-create-migration: ##@database create a new migration file
 	$(call database-doctrine-exec, php bin/console doctrine:migrations:diff)
