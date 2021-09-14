@@ -10,7 +10,7 @@ https://symfonycasts.com/screencast/turbo
 
 ### Pré-requis
 
-* docker
+* docker (version > 20.10)
 * docker-compose (version 3)
 
 ### Mise en place de l'environnement
