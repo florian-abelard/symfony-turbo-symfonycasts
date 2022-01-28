@@ -36,16 +36,13 @@ include makefiles/*.mk
 
 init: composer-install ## install project dependencies
 
-up: up-app db-wait-for db-init ## up application
+up: init up-app db-wait-for db-init ## up application
 
 bash-web: ## open a bash session in the web container
 	docker-compose -f ${DOCKER_COMPOSE_FILE} exec web /bin/sh
 
 bash-php: ## open a bash session in the php-fpm container
 	docker-compose -f ${DOCKER_COMPOSE_FILE} exec --user ${USER_ID}:${GROUP_ID} php /bin/sh
-
-bash-composer: ## open a bash session in the composer container
-	docker-compose -f ${DOCKER_COMPOSE_BUILDER_FILE} run --user ${USER_ID}:${GROUP_ID} composer /bin/bash
 
 bash-node: ## open a bash session in the node container
 	docker-compose -f ${DOCKER_COMPOSE_BUILDER_FILE} run --user ${USER_ID}:${GROUP_ID} node /bin/bash
