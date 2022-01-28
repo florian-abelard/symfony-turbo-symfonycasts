@@ -34,7 +34,7 @@ include makefiles/*.mk
 
 #------------------------------------------------------------------------------
 
-init: composer-install ## install project dependencies
+init: composer-install npm-install webpack-build ## install project dependencies
 
 up: init up-app db-wait-for db-init ## up application
 
