@@ -6,14 +6,14 @@
     opacity: .4;
 } */
 
-body {
+/* body {
     font-family: 'Montserrat', sans-serif;
     transition: opacity 1000ms;
 }
 
 body.turbo-loading, body.turbo-loaded {
     opacity: .4;
-}
+} */
 
 a, a:hover  {
     color: #000;
